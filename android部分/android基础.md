@@ -199,3 +199,25 @@
 为Service的onStartCommand提供默认实现，将请求Intent添加到队列中；
 IntentService不会阻塞UI线程，而普通Serveice会导致ANR异常
 Intentservice若未执行完成上一次的任务，将不会新开一个线程，是等待之前的任务完成后，再执行新的任务，等任务完成后再次调用stopSelf()
+7. android四种启动模式：
+1. Standard模式（默认）
+
+我们平时直接创建的Activity都是这种模式的Activity，这种模式的Activity的特点是：只要你创建了Activity实例，一旦激活该Activity，则会向任务栈中加入新创建的实例，退出Activity则会在任务栈中销毁该实例。
+
+ 
+
+2. SingleTop模式
+
+这种模式会考虑当前要激活的Activity实例在任务栈中是否正处于栈顶，如果处于栈顶则无需重新创建新的实例，会重用已存在的实例，否则会在任务栈中创建新的实例。
+
+ 
+
+3. SingleTask模式
+
+如果任务栈中存在该模式的Activity实例，则把栈中该实例以上的Activity实例全部移除，调用该实例的newInstance()方法重用该Activity，使该实例处於栈顶位置，否则就重新创建一个新的Activity实例。
+
+ 
+
+4. SingleInstance模式
+
+当该模式Activity实例在任务栈中创建后，只要该实例还在任务栈中，即只要激活的是该类型的Activity，都会通过调用实例的newInstance()方法重用该Activity，此时使用的都是同一个Activity实例，它都会处于任务栈的栈顶。此模式一般用于加载较慢的，比较耗性能且不需要每次都重新创建的Activity。
