@@ -9,6 +9,9 @@
     - LinkedList采用双向循环列表
     - 对于ArrayList，查询速度很快，增加和删除（非最后一个节点）操作非常慢（本质上由数组的		特性决定的）
     - 对于LinkedList，查询速度非常慢，增加和删除操作非常快（本质上是由双向循环列表决定的）
+    
+    - 线性安全的有：vector,hashTable,StringBuffer
+    - 不安全的有：ArrayList,HashMap,StringBuilder
 2. **HashMap和HashTable源代码级别的区别**
 	- HashMap的底层源码实现：当我们往HashMap中put元素的时候，先根据key的hashCode重新计算hash值，根据hash值得到这个元素在数组中的位置（即下标），如果数组该位置上已经存放有其他元素了，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放在链尾。如果数组该位置上没有元素，就直接将该元素放到此数组中的该位置上。
    - 最明显的区别在于Hashtable是同步的（每个方法都是synchronized），而HashMap则不是。
